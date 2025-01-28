@@ -3,6 +3,8 @@ package com.testdashboard.app.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Team {
@@ -13,7 +15,10 @@ public class Team {
     private String name;
     private String owner;
 
-    private Long parentTeamId;
 
 
+    // One-to-Many relationship with App
+    @OneToMany(mappedBy = "team") // "team" is the field in App
+    private List<App> apps;
 }
+

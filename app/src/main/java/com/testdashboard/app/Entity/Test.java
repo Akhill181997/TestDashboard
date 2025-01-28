@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+
 @Data
 @Entity
 public class Test {
@@ -17,7 +18,8 @@ public class Test {
     private String result;
     private LocalDateTime lastUpdated;
 
-    private Long appId;
-
-
+    // Many-to-One relationship with App
+    @ManyToOne
+    @JoinColumn(name = "app_id") // Foreign key column in Test table
+    private App app;
 }
